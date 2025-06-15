@@ -19,9 +19,9 @@ def get_all_namew(base_url):
         except requests.RequestException as e:
             print(f"请求失败: {e}")
         soup = BeautifulSoup(response.text, "html.parser")
-        names = soup.select('#post_container > li:nth-child(2) > div.thumbnail > a > img')
+        names = soup.select('#post-panel > div.blog-post > div > div.post-meta.wrapper-lg > h2 > a')
         for name in names:
-            print(name)
+            print(name.get_text())
         #links = soup.select('a')
         #html = etree.HTML(response.text)
         #names = html.xpath('//*[@id="post-panel"]/div[1]/div[1]/div[2]/h2/a/text()')
@@ -33,5 +33,5 @@ def get_all_namew(base_url):
         #            f.write(f"{href}\n")
 
 if __name__ == "__main__":
-    base_url = 'https://www.yinfans.me/'
+    base_url = 'https://limbopro.com/'
     get_all_namew(base_url)
